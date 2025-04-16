@@ -7,27 +7,32 @@
     <title>CadOO</title>
     <link rel="icon" type="image/svg" href="assets/images/cadoo-favicon-blue.svg">
     <link href="assets/styles/login.css" rel="stylesheet" type="text/css" />
-    <script src="assets/js/login-validacao.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="assets/js/login.js" defer></script>
 </head>
 
 <body>
     <div class="login-page">
         <div class="login-conteudo">
             <form action="post" id="form-login">
-                <div id="logotipo"><img width="180" src="assets/images/new-cadoo-blue.svg" alt="CadOO logotipo"></div>
+                <div class="wrapper-logotipo"><img width="180" src="assets/images/new-cadoo-blue.svg" alt="CadOO logotipo"></div>
 
-                <input type="email" id="email" placeholder="E-mail" autofocus required />
+                <div id="mensagem-erro" class="mensagem-erro">E-mail ou senha inválidos!</div>
 
-                <input type="password" id="senha" placeholder="Senha" />
+                <input type="email" class="form-login__field" id="email" placeholder="E-mail" autofocus required />
 
-                <a href="/">Esqueci minha senha</a>
+                <div class="input-password-wrapper">
+                    <input type="password" class="form-login__field" id="senha" placeholder="Senha" required/>
+                    <i id="toggle-senha" class="fa-solid fa-eye-slash" style="color: #808080; cursor: pointer;" role="button" tabindex="0" aria-label="Mostrar senha"></i>
+                </div>
 
-                <input type="submit" onclick="logar(); return false" value="Acessar" class="botao" required>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="form-login__link" target="_blank">Esqueci minha senha</a>
 
-                <a href="/">Não possui cadastro?</a>
+                <input type="submit" value="Acessar" class="botao" required>
 
-                <div id="rodape">Desenvolvido por César Borba, Kaue Kenji, João Pedro Cordeiro e Natanael Santana. -
-                    2025</div>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="form-login__link" target="_blank">Não possui cadastro?</a>
+
+                <div class="rodape">Desenvolvido por <a href="https://github.com/cesar-borba" target="_blank">César Borba</a>, <a href="https://github.com/KaueKenji" target="_blank">Kaue Kenji</a>, <a href="https://github.com/JpCordys" target="_blank">João Pedro Cordeiro</a> e <a href="https://github.com/NatanSts" target="_blank">Natanael Santana</a>. - 2025</div>
             </form>
         </div>
     </div>
