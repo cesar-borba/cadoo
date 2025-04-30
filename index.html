@@ -19,21 +19,61 @@
 
                 <div id="mensagem-erro" class="mensagem-erro">E-mail ou senha inválidos!</div>
 
-                <input type="email" class="form-login__field" id="email" placeholder="E-mail" autofocus required />
+                <input type="email" class="login-page__form-field" id="email" placeholder="E-mail" autocomplete="username" autofocus required />
 
                 <div class="input-password-wrapper">
-                    <input type="password" class="form-login__field" id="senha" placeholder="Senha" required/>
-                    <i id="toggle-senha" class="fa-solid fa-eye-slash" style="color: #808080; cursor: pointer;" role="button" tabindex="0" aria-label="Mostrar senha"></i>
+                    <input type="password" class="login-page__form-field" id="senha" placeholder="Senha" autocomplete="current-password" required/>
+                    <i id="toggle-senha" class="fa-solid fa-eye-slash" role="button" tabindex="0" aria-label="Mostrar senha"></i>
                 </div>
 
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="form-login__link" target="_blank">Esqueci minha senha</a>
+                <a onclick="mostrarFormulario('form-recover')" class="form-login__link" tabindex="0" onkeydown="if(event.key === 'Enter') mostrarFormulario('form-recover')">Esqueci minha senha</a>
 
                 <input type="submit" value="Acessar" class="botao" required>
 
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="form-login__link" target="_blank">Não possui cadastro?</a>
-
-                <div class="rodape">Desenvolvido por <a href="https://github.com/cesar-borba" target="_blank">César Borba</a>, <a href="https://github.com/KaueKenji" target="_blank">Kaue Kenji</a>, <a href="https://github.com/JpCordys" target="_blank">João Pedro Cordeiro</a> e <a href="https://github.com/NatanSts" target="_blank">Natanael Santana</a>. - 2025</div>
+                <a onclick="mostrarFormulario('form-register')" class="form-login__link" tabindex="0" onkeydown="if(event.key === 'Enter') mostrarFormulario('form-register')">Não possui cadastro?</a>
             </form>
+
+            <form action="post" id="form-recover">
+                <div class="wrapper-logotipo"><img width="180" src="assets/images/new-cadoo-blue.svg" alt="CadOO logotipo"></div>
+
+                <p id="descricao-recover" class="descricao">Informe seu <strong>e-mail</strong> para recuperar a <strong>senha</strong>.</p>
+
+                <div id="mensagem-erro-recover" class="mensagem-erro">E-mail inválido!</div>
+
+                <input type="email" class="login-page__form-field" id="email-recover" placeholder="E-mail"/>
+
+                <input id="send-email" type="submit" value="Enviar" class="botao" required>
+
+                <a id="voltar-recover" onclick="mostrarFormulario('form-login')" class="form-login__link" tabindex="0" onkeydown="if(event.key === 'Enter') mostrarFormulario('form-login')">Voltar</a>
+            </form>
+
+            <form action="post" id="form-register">
+                <div class="wrapper-logotipo"><img width="180" src="assets/images/new-cadoo-blue.svg" alt="CadOO logotipo"></div>
+
+                <p id="descricao-register" class="descricao">Cadastre-se preenchendo os <strong>campos</strong> abaixo.</p>
+
+                <div id="mensagem-erro-register" class="mensagem-erro"></div>
+
+                <input type="text" class="login-page__form-field" id="nome-register" placeholder="Nome" required/>
+
+                <input type="email" class="login-page__form-field" id="email-register" placeholder="E-mail" autocomplete="username" required/>
+
+                <div id="wrapper-nova-senha" class="input-password-wrapper">
+                    <input type="password" class="login-page__form-field" id="nova-senha" placeholder="Senha" autocomplete="current-password" required/>
+                    <i id="toggle-nova-senha" class="fa-solid fa-eye-slash" role="button" tabindex="0" aria-label="Mostrar senha"></i>
+                </div>
+
+                <div id="wrapper-redigite-senha" class="input-password-wrapper">
+                    <input type="password" class="login-page__form-field" id="redigite-senha" placeholder="Redigite a senha" autocomplete="current-password" required/>
+                    <i id="toggle-redigite-senha" class="fa-solid fa-eye-slash" role="button" tabindex="0" aria-label="Mostrar senha"></i>
+                </div>
+
+                <input id="send-register" type="submit" value="Cadastrar-se" class="botao" required>
+
+                <a id="voltar-register" onclick="mostrarFormulario('form-login')" class="form-login__link" tabindex="0" onkeydown="if(event.key === 'Enter') mostrarFormulario('form-login')">Voltar</a>
+            </form>
+
+            <div class="rodape">Desenvolvido por <a href="https://github.com/cesar-borba" target="_blank">César Borba</a>, <a href="https://github.com/KaueKenji" target="_blank">Kaue Kenji</a>, <a href="https://github.com/JpCordys" target="_blank">João Pedro Cordeiro</a> e <a href="https://github.com/NatanSts" target="_blank">Natanael Santana</a>. - 2025</div>
         </div>
     </div>
 </body>

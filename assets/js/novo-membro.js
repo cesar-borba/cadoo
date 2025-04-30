@@ -111,15 +111,10 @@ function preencherEstados() {
     });
 }
 
-
-
 // Chama a função para preencher os selects quando a página carregar
 document.addEventListener('DOMContentLoaded', preencherSexo);
 document.addEventListener('DOMContentLoaded', preencherCivil);
 document.addEventListener('DOMContentLoaded', preencherEstados);
-
-
-// ** fim Estado
 
 // ** Limpar campo
 function LimparCampos() {
@@ -139,22 +134,21 @@ function LimparCampos() {
     const nomeMae = document.querySelector("#nomeMae");
     const nomePai = document.querySelector("#nomePai");
 
-    //limpar
-        nome.value = '';
-        sobrenome.value = '';
-        cpf.value = '';
-        nasc.value = '';
-        sexo.value = '';
-        civil.value = '';
-        cep.value = '';
-        rua.value = '';
-        numEnd.value = '';
-        complemento.value = '';
-        estado.value = '';
-        telefone.value = '';
-        email.value = '';
-        nomeMae.value = '';
-        nomePai.value = '';
+    nome.value = '';
+    sobrenome.value = '';
+    cpf.value = '';
+    nasc.value = '';
+    sexo.value = '';
+    civil.value = '';
+    cep.value = '';
+    rua.value = '';
+    numEnd.value = '';
+    complemento.value = '';
+    estado.value = '';
+    telefone.value = '';
+    email.value = '';
+    nomeMae.value = '';
+    nomePai.value = '';
     
 }
 // ** fim Limpar campo
@@ -162,6 +156,6 @@ function LimparCampos() {
 
 // ** função voltar para pagina principal
 function Sair() {
-     window.location.href = 'Principal.html';
+     window.location.href = 'principal.html';
 }
 // ** fim função voltar
