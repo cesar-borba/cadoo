@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* tornar borda 0*/
   font-family: "Poppins", sans-serif;
 
 }
@@ -11,9 +10,6 @@ body {
   background: green;
 }
 
-/*css padrao para tds container*/
-
-/*css do menu de cima*/
 nav {
   display: flex;
   margin: 0 auto;
@@ -48,9 +44,6 @@ nav ul li a {
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
   transition: all .3s ease-in-out;
-
-
-
   border-radius: 30px;
   background: lightgrey;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
