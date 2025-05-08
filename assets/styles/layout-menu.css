@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&family=Lexend:wght@100..900&display=swap');
 
-/* :root {
-    --cor-primaria: #133E87;
-    --cor-secundaria: #F3F3E0;
-    --cor-terciaria: #608BC1;
-    --cor-branca: #FFFFFF;
-    --cor-borda-field: #808080;
-    --botao-selecionado: #041B42;
-    --cor-desc-rodape: #808080;
-    --cor-background-selection: rgb(99, 97, 97);
-    --cor-font-selection: white;
-    --fonte-primaria: "Inter", sans-serif;
-    --fonte-logo: "Lexend", sans-serif;
-    --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
-    --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
-} */
-
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +35,11 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    z-index: 2;
+}
+
+.menu-tela--fixed {
+    position: fixed;
+    z-index: 4;
 }
 
 .menu-icon {

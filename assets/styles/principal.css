@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&family=Lexend:wght@100..900&display=swap');
 
-:root {
+/* :root {
     --cor-primaria: #133E87;
     --cor-secundaria: #F3F3E0;
     --cor-terciaria: #608BC1;
@@ -14,7 +14,7 @@
     --fonte-logo: "Lexend", sans-serif;
     --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
     --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
-}
+} */
 
 body {
     background-color: var(--cor-branca);
@@ -51,7 +51,11 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    z-index: 2;
+}
+
+.menu-tela--fixed {
+    position: fixed;
+    z-index: 4;
 }
 
 .menu-icon {
