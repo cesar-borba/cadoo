@@ -1,0 +1,20 @@
+:root {
+    --cor-primaria: #133E87;
+    --cor-secundaria: #F3F3E0;
+    --cor-terciaria: #608BC1;
+    --cor-branca: #FFFFFF;
+    --cor-borda-field: #808080;
+    --botao-selecionado: #041B42;
+    --cor-erro: #ff0000;
+    --cor-desc-rodape: #808080;
+    --cor-background-selection: rgb(99, 97, 97);
+    --cor-font-selection: white;
+    --cor-incluir: green;
+    --cor-botao-selecionado-incluir: rgb(4, 75, 4);
+    --cor-excluir: rgb(204, 17, 17);
+    --cor-botao-selecionado-excluir: rgb(122, 11, 11);
+    --fonte-primaria: "Inter", sans-serif;
+    --fonte-logo: "Lexend", sans-serif;
+    --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
+    --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
+}

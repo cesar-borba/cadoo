@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&family=Lexend:wght@100..900&display=swap');
 
-:root {
+/* :root {
     --cor-primaria: #133E87;
     --cor-secundaria: #F3F3E0;
     --cor-terciaria: #608BC1;
@@ -14,6 +14,16 @@
     --fonte-logo: "Lexend", sans-serif;
     --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
     --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background-color: var(--cor-background-selection);
+    color: var(--cor-font-selection);
 }
 
 body {
@@ -21,16 +31,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.rodape {
-    background: var(--degrade-footer);
-    color: var(--cor-branca);
-    padding: 25px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     font-family: var(--fonte-primaria);
 }
 
@@ -139,19 +139,10 @@ body {
     align-items: center;
 }
 
-.linha-header,
-.linha-footer {
+.linha-header{
     height: 4px;
     background-color: var(--botao-selecionado);
     width: 100%;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
 }
 
 .options-container {

@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupos - CadOO</title>
-    <link href="../assets/styles/principal.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet"> -->
+    <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/lista-grupos.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
     <script src="../assets/js/slide-menu.js" defer></script>
+    <script src="../assets/js/lista-grupos.js" defer></script>
 </head>
 
 <body>
@@ -45,14 +48,19 @@
     </div>
 
     <main>
-        
+        <div class="search-grid-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar grupos..." />
+                <button class="btn search-btn" id="searchButton">Pesquisar</button>
+                <div class="action-buttons">
+                    <button class="btn include-btn" id="includeButton">Incluir</button>
+                    <button class="btn delete-btn" id="deleteButton">Excluir</button>
+                </div>
+            </div>
+            <div class="grid-container" id="group-container">
+            </div>
+        </div>
     </main>
-
-    <div class="linha-footer"></div>
-
-    <!-- <footer class="rodape">
-        <p>&copy; 2025 - Cadoo Software Development S.A.</p>
-    </footer> -->
 </body>
 
 </html>
