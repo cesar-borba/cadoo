@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Config - CadOO</title>
-    <link href="../assets/styles/principal.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet"> -->
     <script src="../assets/js/slide-menu.js" defer></script>
 </head>
 
@@ -38,23 +37,24 @@
     <div class="linha-header"></div>
 
     <div class="side-menu" id="sideMenu">
+        <div class="side-menu__logo">
+            <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon-slide"></i>
+            <div class="side-menu__texto">Config.</div>
+        </div>
         <ul class="side-menu__list">
-            <li class="side-menu__item logout"><a href="../pages/principal.html" class="item__link">Principal</a></li>
-            <li class="side-menu__item logout"><a href="../pages/lista-grupos.html" class="item__link">Grupos</a></li>
-            <li class="side-menu__item logout"><a href="../pages/membros.html" class="item__link">Membros</a></li>
-            <li class="side-menu__item logout"><a href="/" class="item__link">Sair</a></li>
+            <li class="side-menu__item"><a href="../pages/principal.html" class="item__link">Principal</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-grupos.html" class="item__link">Grupos</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-membros.html" class="item__link">Membros</a></li>
+            <li class="side-menu__item"><a href="/" class="item__link logout">Sair</a></li>
         </ul>
     </div>
 
     <main>
-        
+        <ul>
+            <li>Mudar idioma</li>
+            <li>Modo escuro</li>
+        </ul>
     </main>
-
-    <!-- <div class="linha-footer"></div> -->
-
-    <!-- <footer class="rodape">
-        <p>&copy; 2025 - Cadoo Software Development S.A.</p>
-    </footer> -->
 </body>
 
 </html>

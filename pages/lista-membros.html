@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Grupo - CadOO</title>
+    <title>Grupos - CadOO</title>
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
-    <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/styles/detalhes-grupo.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/lista-membros.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
     <script src="../assets/js/slide-menu.js" defer></script>
-    <script src="../assets/js/detalhes-grupo.js" defer></script>
+    <script src="../assets/js/lista-membros.js" defer></script>
 </head>
+
 <body>
+
     <header class="cabecalho">
         <div class="menu-tela">
             <div class="bg-icon" id="menuActivator">
                 <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon"></i>
             </div>
-            <div class="descricao-tela">Grupos</div>
+            <div class="descricao-tela">Membros</div>
         </div>
         <div class="header-logo">
             <img src="../assets/images/cadoo-favicon-white.svg" alt="Logo CadOO" class="logo">
@@ -37,26 +41,30 @@
     <div class="side-menu" id="sideMenu">
         <div class="side-menu__logo">
             <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon-slide"></i>
-            <div class="side-menu__texto">Grupos</div>
+            <div class="side-menu__texto">Membros</div>
         </div>
         <ul class="side-menu__list">
             <li class="side-menu__item"><a href="../pages/principal.html" class="item__link">Principal</a></li>
-            <li class="side-menu__item"><a href="../pages/membros.html" class="item__link">Membros</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-grupos.html" class="item__link">Grupos</a></li>
             <li class="side-menu__item"><a href="../pages/config.html" class="item__link">Configurações</a></li>
             <li class="side-menu__item"><a href="/" class="item__link logout">Sair</a></li>
         </ul>
     </div>
 
     <main>
-        <div class="menu-tela">
-            <button onclick="voltarPagina()" class="btn-voltar">
-                <i class="fa-solid fa-arrow-left" style="color: blue;"></i> Voltar
-            </button>
-        </div>
-        <div class="detalhes-container">
-            <h1 id="grupo-titulo"></h1>
-            <div id="grupo-info"></div>
+        <div class="search-grid-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar grupos..." />
+                <button class="btn search-btn" id="searchButton">Pesquisar</button>
+                <div class="action-buttons">
+                    <button class="btn include-btn" id="includeButton">Incluir</button>
+                    <button class="btn delete-btn" id="deleteButton">Excluir</button>
+                </div>
+            </div>
+            <div class="grid-container" id="group-container">
+            </div>
         </div>
     </main>
 </body>
+
 </html>

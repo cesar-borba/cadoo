@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Altera o título da página
+    document.title = `${grupo.titulo} - CadOO`;
+
     // Preenche os detalhes do grupo
     document.getElementById('grupo-titulo').textContent = grupo.titulo;
     document.getElementById('grupo-info').innerHTML = `

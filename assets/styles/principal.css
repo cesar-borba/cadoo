@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&family=Lexend:wght@100..900&display=swap');
 
-/* :root {
-    --cor-primaria: #133E87;
-    --cor-secundaria: #F3F3E0;
-    --cor-terciaria: #608BC1;
-    --cor-branca: #FFFFFF;
-    --cor-borda-field: #808080;
-    --botao-selecionado: #041B42;
-    --cor-desc-rodape: #808080;
-    --cor-background-selection: rgb(99, 97, 97);
-    --cor-font-selection: white;
-    --fonte-primaria: "Inter", sans-serif;
-    --fonte-logo: "Lexend", sans-serif;
-    --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
-    --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
-} */
-
 body {
     background-color: var(--cor-branca);
     min-height: 100vh;
@@ -51,11 +35,30 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+    opacity: 1;
 }
 
 .menu-tela--fixed {
     position: fixed;
     z-index: 4;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.side-menu .menu-tela {
+    position: relative;
+    left: 0;
+    margin: 20px 0;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.side-menu.open .menu-tela {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .menu-icon {
@@ -194,6 +197,7 @@ main {
 .option-box:hover {
     background: var(--botao-selecionado);
     color: var(--cor-branca);
+    border: 2px solid var(--botao-selecionado);
 }
 
 .side-menu {
@@ -216,8 +220,27 @@ main {
     left: 0;
 }
 
+.side-menu__logo {
+    display: flex;
+    margin: 1rem 0 0 1rem;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-menu {
+    height: 40px;
+    object-fit: contain;
+    margin: 0;
+}
+
+.side-menu__texto {
+    font-family: var(--fonte-logo);
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+
 .side-menu__list {
-    margin: 4rem 1rem;
+    margin: 2rem 1rem 1rem 1rem;
     list-style: none;
     padding: 0;
     display: flex;
@@ -234,4 +257,8 @@ main {
 .item__link {
     color: var(--cor-branca);
     text-decoration: none;
+}
+
+.logout:hover {
+    color: var(--cor-sair);
 }

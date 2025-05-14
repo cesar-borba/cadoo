@@ -13,6 +13,7 @@
     --cor-botao-selecionado-incluir: rgb(4, 75, 4);
     --cor-excluir: rgb(204, 17, 17);
     --cor-botao-selecionado-excluir: rgb(122, 11, 11);
+    --cor-sair: #ff7c7c;
     --fonte-primaria: "Inter", sans-serif;
     --fonte-logo: "Lexend", sans-serif;
     --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));

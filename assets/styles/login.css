@@ -1,19 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root {
-    --cor-primaria: #133E87;
-    --cor-secundaria: #F3F3E0;
-    --cor-terciaria: #608BC1;
-    --cor-branca: #FFFFFF;
-    --cor-borda-field: #808080;
-    --cor-erro: #ff0000;
-    --botao-selecionado: #041B42;
-    --cor-desc-rodape: #808080;
-    --cor-background-selection: rgb(99, 97, 97);
-    --cor-font-selection: white;
-    --fonte-primaria: "Inter", sans-serif;
-}
-
 body {
     font-family: var(--fonte-primaria);
     background-color: var(--cor-branca);
@@ -78,6 +64,7 @@ body {
 }
 
 input {
+    font-family: var(--fonte-primaria);
     padding: 15px;
     font-size: 0.95rem;
     margin-bottom: 20px;
@@ -85,6 +72,18 @@ input {
     border-radius: 10px;
     transition: all linear 160ms;
     outline: none;
+}
+
+input::-webkit-input-placeholder {
+    font-family: var(--fonte-primaria);
+}
+
+input::-moz-placeholder {
+    font-family: var(--fonte-primaria);
+}
+
+input:-ms-input-placeholder {
+    font-family: var(--fonte-primaria);
 }
 
 .login-page__form-field {
