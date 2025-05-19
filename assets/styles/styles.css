@@ -2,8 +2,12 @@
     --cor-primaria: #133E87;
     --cor-secundaria: #F3F3E0;
     --cor-terciaria: #608BC1;
+    --cor-terciaria-hover: rgba(96, 139, 193, 0.3);
+    --header-table: #dce6f6;
     --cor-branca: #FFFFFF;
+    --cor-preta: #000000;
     --cor-borda-field: #808080;
+    --cor-borda-registros: #a8a8a8;
     --botao-selecionado: #041B42;
     --cor-erro: #ff0000;
     --cor-desc-rodape: #808080;

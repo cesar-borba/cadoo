@@ -1,75 +1,152 @@
-const grupos = [
-  { titulo: "Encontro Jovem", endereco: "Rua das Flores, 123", membros: 24, data: "2025-05-20", cor: "vermelho" },
-  { titulo: "Grupo de Casais", endereco: "Av. Central, 45", membros: 18, data: "2025-05-21", cor: "azul claro" },
-  { titulo: "Estudo Bíblico", endereco: "", membros: 12, data: "2025-05-22", cor: "amarelo" },
-  { titulo: "Louvor & Adoração", endereco: "Rua da Paz, 89", membros: 30, data: "2025-05-23", cor: "roxo" },
-  { titulo: "Grupo de Oração", endereco: "Capela Santa Luzia", membros: 15, data: "2025-05-24", cor: "verde" },
-  { titulo: "Grupo de Jovens Adultos", endereco: "Salão Paroquial", membros: 21, data: "2025-05-25", cor: "laranja" },
-  { titulo: "Grupo de Mulheres", endereco: "", membros: 20, data: "2025-05-26", cor: "rosa claro" },
-  { titulo: "Ministério de Música", endereco: "Estúdio Musical", membros: 10, data: "2025-05-27", cor: "azul escuro" },
-  { titulo: "Grupo de Homens", endereco: "Centro Comunitário", membros: 17, data: "2025-05-28", cor: "cinza" },
-  { titulo: "Célula Alfa Teste string muito", endereco: "", membros: 8, data: "2025-05-29", cor: "verde limão" },
-  { titulo: "Célula Beta", endereco: "Rua do Sol, 111", membros: 14, data: "2025-05-30", cor: "marrom" },
-  { titulo: "Célula Gama", endereco: "Av. Brasil, 200", membros: 13, data: "2025-06-01", cor: "turquesa" },
-  { titulo: "Encontro Teens", endereco: "", membros: 25, data: "2025-06-02", cor: "azul petróleo" },
-  { titulo: "Grupo de Intercessão", endereco: "Sala de Oração", membros: 19, data: "2025-06-03", cor: "verde musgo" },
-  { titulo: "Grupo Missionário", endereco: "Igreja Matriz", membros: 22, data: "2025-06-04", cor: "bege" },
-  { titulo: "Célula Restaurar", endereco: "Rua do Amor, 77", membros: 13, data: "2025-06-05", cor: "turquesa" },
-  { titulo: "Grupo de Discipulado", endereco: "Salão Social", membros: 16, data: "2025-06-06", cor: "azul marinho" },
-  { titulo: "Encontro de Fé", endereco: "Igreja Nova Aliança", membros: 27, data: "2025-06-07", cor: "dourado" },
-  { titulo: "Célula Vida Nova", endereco: "Rua Esperança, 88", membros: 14, data: "2025-06-08", cor: "lavanda" },
-  { titulo: "Grupo de Louvor Noturno", endereco: "Capela Central", membros: 9, data: "2025-06-09", cor: "vinho" },
-  { titulo: "Ministério Infantil", endereco: "Sala Kids", membros: 12, data: "2025-06-10", cor: "pêssego" },
-  { titulo: "Jovens em Cristo", endereco: "Salão da Juventude", membros: 22, data: "2025-06-11", cor: "verde oliva" },
-  { titulo: "Grupo Família de Deus", endereco: "Rua da Unidade, 101", membros: 18, data: "2025-06-12", cor: "pérola" },
-  { titulo: "Célula Ágape", endereco: "", membros: 10, data: "2025-06-13", cor: "rosa claro" },
-  { titulo: "Grupo Nova Vida", endereco: "Centro Esperança", membros: 15, data: "2025-06-14", cor: "verde limão" }
+const employees = [
+  { id: 101, nome: "Amanda Castro", grupos: 0 },
+  { id: 102, nome: "Ricardo Lima", grupos: 4 },
+  { id: 1, nome: "César Borba", grupos: 5 },
+  { id: 104, nome: "Marcos Pinto", grupos: 3 },
+  { id: 105, nome: "Érika Mendes", grupos: 1 },
+  { id: 106, nome: "Maria Silva Santos", grupos: 3 },
+  { id: 107, nome: "João Silva", grupos: 2 },
+  { id: 108, nome: "Pedro Oliveira", grupos: 4 },
+  { id: 109, nome: "Ana Santos", grupos: 1 },
+  { id: 110, nome: "Lucas Oliveira", grupos: 5 },
+  { id: 111, nome: "Mariana Costa", grupos: 2 },
+  { id: 112, nome: "José Silva", grupos: 3 },
+  { id: 113, nome: "Carla Santos", grupos: 4 },
+  { id: 114, nome: "Rafael Pereira", grupos: 1 },
+  { id: 115, nome: "Juliana Costa", grupos: 5 },
+  { id: 116, nome: "Fernando Oliveira", grupos: 2 },
+  { id: 117, nome: "Patricia Santos Silva", grupos: 3 },
+  { id: 118, nome: "Bruno Lima", grupos: 4 },
+  { id: 119, nome: "Camila Pereira", grupos: 1 },
+  { id: 120, nome: "Daniel Costa Santos", grupos: 5 },
+  { id: 121, nome: "Laura Silva", grupos: 2 },
+  { id: 122, nome: "Rodrigo Santos", grupos: 3 },
+  { id: 123, nome: "Isabella Oliveira", grupos: 4 },
+  { id: 124, nome: "Thiago Lima", grupos: 1 },
+  { id: 125, nome: "Beatriz Pereira Costa", grupos: 5 },
+  { id: 126, nome: "Gabriel Santos", grupos: 2 },
+  { id: 127, nome: "Carolina Lima Silva", grupos: 3 },
+  { id: 128, nome: "Marcelo Oliveira", grupos: 4 },
+  { id: 129, nome: "Fernanda Costa", grupos: 1 },
+  { id: 130, nome: "André Silva Santos", grupos: 5 },
+  { id: 131, nome: "Luciana Pereira", grupos: 2 },
+  { id: 132, nome: "Paulo Lima", grupos: 3 },
+  { id: 133, nome: "Amanda Santos", grupos: 4 },
+  { id: 134, nome: "Ricardo Oliveira Costa", grupos: 1 },
+  { id: 135, nome: "Débora Silva", grupos: 5 }
 ];
 
-const container = document.getElementById("group-container");
-
+// const employees = [];
 const searchButton = document.getElementById("searchButton");
+const sortState = {
+  current: {
+    field: 'id',
+    direction: 'asc'
+  }
+};
 
-// Função para renderizar os grupos
-function renderizarGrupos(gruposFiltrados = grupos) {
-  container.innerHTML = '';
+function createHeaderRow() {
+  return `
+    <div class="header-row">
+      <div class="header-icon">
+        <i class="fa-solid fa-list"></i>
+      </div>
+      <div class="header-id-name">
+        <div class="header-column">
+          <span data-sort="id" class="sortable ${sortState.current.field === 'id' ? `sort-indicator ${sortState.current.direction}` : ''}">
+            ID
+          </span>
+        </div>
+        <div class="header-column">
+          <span data-sort="nome" class="sortable ${sortState.current.field === 'nome' ? `sort-indicator ${sortState.current.direction}` : ''}">
+            NOME
+          </span>
+        </div>
+      </div>
+      <div class="header-column">
+        <span data-sort="grupos" class="sortable ${sortState.current.field === 'grupos' ? `sort-indicator ${sortState.current.direction}` : ''}">
+          Nº GRUPOS
+        </span>
+      </div>
+    </div>
+  `;
+}
 
-  gruposFiltrados.forEach(grupo => {
+function sortEmployees(field, employeesToSort) {
+  // Remove indicadores anteriores
+  document.querySelectorAll('.sortable').forEach(el => {
+    el.classList.remove('sort-indicator', 'asc', 'desc');
+  });
+
+  // Atualiza a direção da ordenação
+  sortState.current.direction = sortState.current.field === field
+    ? (sortState.current.direction === 'asc' ? 'desc' : 'asc')
+    : 'asc';
+  sortState.current.field = field;
+
+  // Aplica a ordenação
+  const sortedEmployees = [...employeesToSort].sort((a, b) => {
+    const comparison = field === 'id' ? a.id - b.id
+      : field === 'nome' ? a.nome.localeCompare(b.nome)
+        : a.grupos - b.grupos;
+
+    // Corrigindo a lógica: asc deve ser crescente (comparison normal)
+    // desc deve ser decrescente (comparison invertido)
+    return sortState.current.direction === 'desc' ? -comparison : comparison;
+  });
+
+  return sortedEmployees;
+}
+
+function renderEmployees(employees) {
+  const listContainer = document.getElementById("employeeList");
+  listContainer.innerHTML = '';
+
+  if (employees.length > 0) {
+    listContainer.innerHTML = createHeaderRow();
+
+    employees.forEach(emp => {
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "employee-card";
       card.innerHTML = `
-          <h2>${grupo.titulo}</h2>
-          ${grupo.endereco ? `<p><span class="highlight">Endereço:</span> ${grupo.endereco}</p>` : ""}
-          <p><span class="highlight">Membros:</span> ${grupo.membros}</p>
-          <p><span class="highlight">Data:</span> ${grupo.data}</p>
+        <div class="employee-info">
+          <div class="employee-avatar">
+            <i class="fa-solid fa-person"></i>
+          </div>
+          <span class="employee-id">${emp.id}</span>
+          <span class="employee-name">${emp.nome}</span>
+        </div>
+        <div class="employee-field employee-groups">${emp.grupos} grupo${emp.grupos !== 1 ? 's' : ''}</div>
       `;
-      
-      // Adiciona evento de clique no card
-      card.addEventListener('click', () => {
-          navegarParaDetalhes(grupo);
-      });
+      listContainer.appendChild(card);
+    });
 
-      container.appendChild(card);
+    addSortListeners(employees);
+  } else {
+    listContainer.innerHTML = '<p class="no-results">Nenhum membro encontrado.</p>';
+  }
+}
+
+function addSortListeners(employeesToSort) {
+  document.querySelectorAll('.sortable[data-sort]').forEach(header => {
+    header.addEventListener('click', () => {
+      const sortedEmployees = sortEmployees(header.dataset.sort, employeesToSort);
+      renderEmployees(sortedEmployees);
+    });
   });
 }
 
-function navegarParaDetalhes(grupo) {
-  // Salva os dados do grupo no localStorage
-  localStorage.setItem('grupoSelecionado', JSON.stringify(grupo));
-  // Redireciona para a página de detalhes
-  window.location.href = 'detalhes-grupo.html';
-}
-
-// Event listener para o botão de pesquisa
 searchButton.addEventListener('click', () => {
-    const searchInput = document.getElementById("searchInput");
-    const searchTerm = searchInput.value.toLowerCase();
+  const searchInput = document.getElementById("searchInput");
+  const searchTerm = searchInput.value.toLowerCase();
 
-    // Filtra os grupos baseado no termo de pesquisa
-    const gruposFiltrados = grupos.filter(grupo => 
-        grupo.titulo.toLowerCase().includes(searchTerm)
-    );
+  sortState.current.field = 'id';
+  sortState.current.direction = 'desc';
 
-    // Renderiza os grupos filtrados
-    renderizarGrupos(gruposFiltrados);
+  const filteredEmployees = employees.filter(employee =>
+    employee.nome.toLowerCase().includes(searchTerm)
+  );
+
+  const sortedEmployees = sortEmployees('id', filteredEmployees);
+  renderEmployees(sortedEmployees);
 });

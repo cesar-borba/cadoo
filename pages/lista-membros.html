@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupos - CadOO</title>
+    <title>Membros - CadOO</title>
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
@@ -54,14 +54,17 @@
     <main>
         <div class="search-grid-container">
             <div class="search-bar">
-                <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar grupos..." />
+                <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar membros..." />
                 <button class="btn search-btn" id="searchButton">Pesquisar</button>
                 <div class="action-buttons">
                     <button class="btn include-btn" id="includeButton">Incluir</button>
                     <button class="btn delete-btn" id="deleteButton">Excluir</button>
                 </div>
             </div>
-            <div class="grid-container" id="group-container">
+            <div class="rows-container">
+
+                <div class="employee-list" id="employeeList">
+                </div>
             </div>
         </div>
     </main>
