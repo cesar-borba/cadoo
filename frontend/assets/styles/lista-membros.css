@@ -162,13 +162,11 @@
 
 .header-id-name div:first-child {
     width: 60px;
-    /* Mesma largura do employee-id */
     flex-shrink: 0;
 }
 
 .header-id-name div:last-child {
     flex: 1;
-    /* Mesmo comportamento do employee-name */
 }
 
 .header-column {
@@ -223,14 +221,19 @@
     margin-right: 10px;
 }
 
+.employee-card:hover {
+    .employee-avatar {
+        background-color: var(--cor-primaria);
+        color: var(--cor-branca);
+    }
+}
+
 .employee-id {
     font-weight: 500;
     color: var(--cor-preta);
     display: inline-block;
     width: 60px;
-    /* Largura fixa para o ID */
     text-align: left;
-    /* Alinha o texto à esquerda */
     flex-shrink: 0;
 }
 
@@ -245,4 +248,26 @@
 
 .employee-groups {
     text-align: right;
+}
+
+/*NEW CSS*/
+
+.employee-card.selectable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.employee-card.selectable:hover {
+    background-color: var(--cor-terciaria-hover);
+}
+
+.employee-card.selected {
+    background-color: var(--cor-terciaria-hover);
+    border: 2px solid var(--cor-primaria);
+}
+
+/* Estilos para o contador de seleção */
+.include-btn.counter {
+    cursor: default;
+    background-color: var(--cor-terciaria);
 }

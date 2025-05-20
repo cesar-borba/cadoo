@@ -95,7 +95,7 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Define 5 colunas no grid */
+    grid-template-columns: repeat(5, 1fr); /* Define 5 colunas no grid */
     gap: 1rem;
     width: 100%; /* Garante que o grid ocupe toda a largura */
     padding: 1rem 0 2rem 0; /* Espaçamento interno no topo e na parte inferior */

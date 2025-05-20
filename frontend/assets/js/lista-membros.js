@@ -1,4 +1,4 @@
-const employees = [
+const employees = JSON.parse(localStorage.getItem('employees')) || [
   { id: 101, nome: "Amanda Castro", grupos: 0 },
   { id: 102, nome: "Ricardo Lima", grupos: 4 },
   { id: 1, nome: "César Borba", grupos: 5 },
@@ -6,12 +6,12 @@ const employees = [
   { id: 105, nome: "Érika Mendes", grupos: 1 },
   { id: 106, nome: "Maria Silva Santos", grupos: 3 },
   { id: 107, nome: "João Silva", grupos: 2 },
-  { id: 108, nome: "Pedro Oliveira", grupos: 4 },
-  { id: 109, nome: "Ana Santos", grupos: 1 },
+  { id: 108, nome: "Pedro Otos", grupos: 1 },
   { id: 110, nome: "Lucas Oliveira", grupos: 5 },
   { id: 111, nome: "Mariana Costa", grupos: 2 },
   { id: 112, nome: "José Silva", grupos: 3 },
-  { id: 113, nome: "Carla Santos", grupos: 4 },
+  { id: 113, nome: "Carla Sanliveira", grupos: 4 },
+  { id: 109, nome: "Ana Santos", grupos: 4 },
   { id: 114, nome: "Rafael Pereira", grupos: 1 },
   { id: 115, nome: "Juliana Costa", grupos: 5 },
   { id: 116, nome: "Fernando Oliveira", grupos: 2 },
@@ -73,7 +73,6 @@ function createHeaderRow() {
 }
 
 function sortEmployees(field, employeesToSort) {
-  // Remove indicadores anteriores
   document.querySelectorAll('.sortable').forEach(el => {
     el.classList.remove('sort-indicator', 'asc', 'desc');
   });
@@ -150,3 +149,81 @@ searchButton.addEventListener('click', () => {
   const sortedEmployees = sortEmployees('id', filteredEmployees);
   renderEmployees(sortedEmployees);
 });
+
+// ...existing code...
+
+const includeButton = document.getElementById("includeButton");
+const deleteButton = document.getElementById("deleteButton");
+const selectionState = {
+    selectedEmployees: new Set(),
+    isSelectionMode: false
+};
+
+// Evento do botão Incluir
+includeButton.addEventListener('click', () => {
+    window.location.href = 'incluir-membro.html';
+});
+
+// Evento do botão Excluir
+deleteButton.addEventListener('click', () => {
+    if (!selectionState.isSelectionMode) {
+        // Inicia modo de seleção
+        selectionState.isSelectionMode = true;
+        includeButton.innerHTML = `(0/${employees.length}) selecionados`;
+        deleteButton.textContent = "Confirmar Exclusão";
+        enableSelectionMode();
+    } else {
+        // Confirma exclusão
+        if (selectionState.selectedEmployees.size > 0) {
+            const confirmed = confirm(`Deseja excluir ${selectionState.selectedEmployees.size} membros?`);
+            if (confirmed) {
+                deleteSelectedEmployees();
+            }
+        }
+        disableSelectionMode();
+    }
+});
+
+const enableSelectionMode = () => {
+    const cards = document.querySelectorAll('.employee-card');
+    cards.forEach(card => {
+        card.classList.add('selectable');
+        card.addEventListener('click', toggleCardSelection);
+    });
+};
+
+const disableSelectionMode = () => {
+    selectionState.isSelectionMode = false;
+    selectionState.selectedEmployees.clear();
+    includeButton.textContent = "Incluir";
+    deleteButton.textContent = "Excluir";
+    
+    const cards = document.querySelectorAll('.employee-card');
+    cards.forEach(card => {
+        card.classList.remove('selectable', 'selected');
+        card.removeEventListener('click', toggleCardSelection);
+    });
+};
+
+const toggleCardSelection = (event) => {
+    const card = event.currentTarget;
+    const employeeId = parseInt(card.querySelector('.employee-id').textContent);
+    
+    if (selectionState.selectedEmployees.has(employeeId)) {
+        selectionState.selectedEmployees.delete(employeeId);
+        card.classList.remove('selected');
+    } else {
+        selectionState.selectedEmployees.add(employeeId);
+        card.classList.add('selected');
+    }
+    
+    includeButton.innerHTML = `(${selectionState.selectedEmployees.size}/${employees.length}) selecionados`;
+};
+
+const deleteSelectedEmployees = () => {
+    const updatedEmployees = employees.filter(emp => !selectionState.selectedEmployees.has(emp.id));
+    employees.length = 0;
+    employees.push(...updatedEmployees);
+    renderEmployees(employees);
+    disableSelectionMode();
+};
