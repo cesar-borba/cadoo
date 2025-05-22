@@ -1,0 +1,107 @@
+.form-container {
+    width: 100%;
+    max-width: 60%;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: var(--cor-preta);
+    font-weight: 500;
+}
+
+.field,
+.form-group select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-section-title {
+    color: var(--cor-primaria);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 25px 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--cor-primaria);
+}
+
+.checkbox-group {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    flex-direction: row;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ced4da;
+    border-radius: 4px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* evita que o checkbox encolha */
+}
+
+.checkbox-container label {
+    display: inline-flex; /* mudança para inline-flex */
+    align-items: center;
+    margin: 0;
+    line-height: 1;
+    cursor: pointer; /* melhora usabilidade */
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    left: 2px;
+    top: -2px;
+}
+
+.checkbox-container input[type="checkbox"]:hover {
+    border-color: var(--cor-primaria);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}

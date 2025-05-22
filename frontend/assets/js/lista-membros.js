@@ -1,4 +1,4 @@
-const employees = JSON.parse(localStorage.getItem('employees')) || [
+const employees = JSON.parse(localStorage.getItem('employees')) || []/* && [
   { id: 101, nome: "Amanda Castro", grupos: 0 },
   { id: 102, nome: "Ricardo Lima", grupos: 4 },
   { id: 1, nome: "César Borba", grupos: 5 },
@@ -34,7 +34,7 @@ const employees = JSON.parse(localStorage.getItem('employees')) || [
   { id: 133, nome: "Amanda Santos", grupos: 4 },
   { id: 134, nome: "Ricardo Oliveira Costa", grupos: 1 },
   { id: 135, nome: "Débora Silva", grupos: 5 }
-];
+]*/;
 
 // const employees = [];
 const searchButton = document.getElementById("searchButton");
@@ -115,7 +115,7 @@ function renderEmployees(employees) {
           <span class="employee-id">${emp.id}</span>
           <span class="employee-name">${emp.nome}</span>
         </div>
-        <div class="employee-field employee-groups">${emp.grupos} grupo${emp.grupos !== 1 ? 's' : ''}</div>
+        <div class="employee-field employee-groups">${0} grupo${emp.grupos !== 1 ? 's' : ''}</div>
       `;
       listContainer.appendChild(card);
     });
@@ -221,9 +221,17 @@ const toggleCardSelection = (event) => {
 };
 
 const deleteSelectedEmployees = () => {
+    // Filtra os membros, removendo os selecionados
     const updatedEmployees = employees.filter(emp => !selectionState.selectedEmployees.has(emp.id));
+    
+    // Atualiza o array local
     employees.length = 0;
     employees.push(...updatedEmployees);
+    
+    // Atualiza o localStorage
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    
+    // Renderiza a lista atualizada
     renderEmployees(employees);
     disableSelectionMode();
 };
