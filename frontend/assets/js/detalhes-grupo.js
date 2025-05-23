@@ -1,25 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Recupera os dados do grupo do localStorage
-    const grupo = JSON.parse(localStorage.getItem('grupoSelecionado'));
+    const params = new URLSearchParams(window.location.search);
+    const grupoId = parseInt(params.get('id'));
     
-    if (!grupo) {
-        window.location.href = 'lista-grupos.html';
-        return;
+    const groups = JSON.parse(localStorage.getItem('groups') || '[]');
+    const grupo = groups.find(g => g.id === grupoId);
+
+    const grupoTitulo = document.getElementById('grupo-titulo');
+    const detalhesGrupo = document.getElementById('detalhes-grupo');
+
+    if (grupo && grupoTitulo && detalhesGrupo) {
+        grupoTitulo.textContent = grupo.titulo;
+        
+        detalhesGrupo.innerHTML = `
+            <div class="info-item">
+                <span class="info-label">Título:</span>
+                <span class="info-value">${grupo.titulo}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Endereço:</span>
+                <span class="info-value">${grupo.endereco || '-'}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Membros:</span>
+                <span class="info-value">${grupo.membros}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Data:</span>
+                <span class="info-value">${grupo.data}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Cor:</span>
+                <span class="info-value" style="color: ${grupo.cor}">${grupo.cor}</span>
+            </div>
+        `;
     }
-
-    // Altera o título da página
-    document.title = `${grupo.titulo} - CadOO`;
-
-    // Preenche os detalhes do grupo
-    document.getElementById('grupo-titulo').textContent = grupo.titulo;
-    document.getElementById('grupo-info').innerHTML = `
-        ${grupo.endereco ? `<p><strong>Endereço:</strong> ${grupo.endereco}</p>` : ''}
-        <p><strong>Membros:</strong> ${grupo.membros}</p>
-        <p><strong>Data:</strong> ${grupo.data}</p>
-        <p><strong>Cor:</strong> ${grupo.cor}</p>
-    `;
 });
 
-function voltarPagina() {
-    window.history.back();
+function voltarListaGrupos() {
+    window.location.href = 'lista-grupos.html';
 }

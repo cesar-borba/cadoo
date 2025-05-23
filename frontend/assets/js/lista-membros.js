@@ -1,42 +1,5 @@
-const employees = JSON.parse(localStorage.getItem('employees')) || []/* && [
-  { id: 101, nome: "Amanda Castro", grupos: 0 },
-  { id: 102, nome: "Ricardo Lima", grupos: 4 },
-  { id: 1, nome: "César Borba", grupos: 5 },
-  { id: 104, nome: "Marcos Pinto", grupos: 3 },
-  { id: 105, nome: "Érika Mendes", grupos: 1 },
-  { id: 106, nome: "Maria Silva Santos", grupos: 3 },
-  { id: 107, nome: "João Silva", grupos: 2 },
-  { id: 108, nome: "Pedro Otos", grupos: 1 },
-  { id: 110, nome: "Lucas Oliveira", grupos: 5 },
-  { id: 111, nome: "Mariana Costa", grupos: 2 },
-  { id: 112, nome: "José Silva", grupos: 3 },
-  { id: 113, nome: "Carla Sanliveira", grupos: 4 },
-  { id: 109, nome: "Ana Santos", grupos: 4 },
-  { id: 114, nome: "Rafael Pereira", grupos: 1 },
-  { id: 115, nome: "Juliana Costa", grupos: 5 },
-  { id: 116, nome: "Fernando Oliveira", grupos: 2 },
-  { id: 117, nome: "Patricia Santos Silva", grupos: 3 },
-  { id: 118, nome: "Bruno Lima", grupos: 4 },
-  { id: 119, nome: "Camila Pereira", grupos: 1 },
-  { id: 120, nome: "Daniel Costa Santos", grupos: 5 },
-  { id: 121, nome: "Laura Silva", grupos: 2 },
-  { id: 122, nome: "Rodrigo Santos", grupos: 3 },
-  { id: 123, nome: "Isabella Oliveira", grupos: 4 },
-  { id: 124, nome: "Thiago Lima", grupos: 1 },
-  { id: 125, nome: "Beatriz Pereira Costa", grupos: 5 },
-  { id: 126, nome: "Gabriel Santos", grupos: 2 },
-  { id: 127, nome: "Carolina Lima Silva", grupos: 3 },
-  { id: 128, nome: "Marcelo Oliveira", grupos: 4 },
-  { id: 129, nome: "Fernanda Costa", grupos: 1 },
-  { id: 130, nome: "André Silva Santos", grupos: 5 },
-  { id: 131, nome: "Luciana Pereira", grupos: 2 },
-  { id: 132, nome: "Paulo Lima", grupos: 3 },
-  { id: 133, nome: "Amanda Santos", grupos: 4 },
-  { id: 134, nome: "Ricardo Oliveira Costa", grupos: 1 },
-  { id: 135, nome: "Débora Silva", grupos: 5 }
-]*/;
+const employees = JSON.parse(localStorage.getItem('employees')) || []
 
-// const employees = [];
 const searchButton = document.getElementById("searchButton");
 const sortState = {
   current: {
@@ -77,20 +40,16 @@ function sortEmployees(field, employeesToSort) {
     el.classList.remove('sort-indicator', 'asc', 'desc');
   });
 
-  // Atualiza a direção da ordenação
   sortState.current.direction = sortState.current.field === field
     ? (sortState.current.direction === 'asc' ? 'desc' : 'asc')
     : 'asc';
   sortState.current.field = field;
 
-  // Aplica a ordenação
   const sortedEmployees = [...employeesToSort].sort((a, b) => {
     const comparison = field === 'id' ? a.id - b.id
       : field === 'nome' ? a.nome.localeCompare(b.nome)
         : a.grupos - b.grupos;
 
-    // Corrigindo a lógica: asc deve ser crescente (comparison normal)
-    // desc deve ser decrescente (comparison invertido)
     return sortState.current.direction === 'desc' ? -comparison : comparison;
   });
 
@@ -113,10 +72,15 @@ function renderEmployees(employees) {
             <i class="fa-solid fa-person"></i>
           </div>
           <span class="employee-id">${emp.id}</span>
-          <span class="employee-name">${emp.nome}</span>
+          <span class="employee-name">${emp.nome} ${emp.sobrenome}</span>
         </div>
         <div class="employee-field employee-groups">${0} grupo${emp.grupos !== 1 ? 's' : ''}</div>
       `;
+      card.addEventListener('click', () => {
+            if (!selectionState.isSelectionMode) {
+                window.location.href = `detalhes-membro.html?id=${emp.id}`;
+            }
+        });
       listContainer.appendChild(card);
     });
 
@@ -142,15 +106,14 @@ searchButton.addEventListener('click', () => {
   sortState.current.field = 'id';
   sortState.current.direction = 'desc';
 
-  const filteredEmployees = employees.filter(employee =>
-    employee.nome.toLowerCase().includes(searchTerm)
-  );
+  const filteredEmployees = employees.filter(employee => {
+    const fullName = `${employee.nome} ${employee.sobrenome}`.toLowerCase();
+    return fullName.includes(searchTerm);
+  });
 
   const sortedEmployees = sortEmployees('id', filteredEmployees);
   renderEmployees(sortedEmployees);
 });
-
-// ...existing code...
 
 const includeButton = document.getElementById("includeButton");
 const deleteButton = document.getElementById("deleteButton");
@@ -161,19 +124,24 @@ const selectionState = {
 
 // Evento do botão Incluir
 includeButton.addEventListener('click', () => {
-    window.location.href = 'incluir-membro.html';
+    if (selectionState.isSelectionMode) {
+        // Se estiver em modo de seleção, apenas cancela
+        disableSelectionMode();
+    } else {
+        // Se não estiver em modo de seleção, navega para incluir
+        window.location.href = 'incluir-membro.html';
+    }
 });
 
 // Evento do botão Excluir
 deleteButton.addEventListener('click', () => {
     if (!selectionState.isSelectionMode) {
-        // Inicia modo de seleção
         selectionState.isSelectionMode = true;
-        includeButton.innerHTML = `(0/${employees.length}) selecionados`;
-        deleteButton.textContent = "Confirmar Exclusão";
+        toggleButtonState(includeButton, 'cancel-btn', 'Cancelar');
+        const selectionInfo = document.getElementById('selectionInfo');
+        selectionInfo.innerHTML = `<i class="fa-solid fa-user-group"></i> (0/${employees.length}) selecionados`;
         enableSelectionMode();
     } else {
-        // Confirma exclusão
         if (selectionState.selectedEmployees.size > 0) {
             const confirmed = confirm(`Deseja excluir ${selectionState.selectedEmployees.size} membros?`);
             if (confirmed) {
@@ -195,13 +163,16 @@ const enableSelectionMode = () => {
 const disableSelectionMode = () => {
     selectionState.isSelectionMode = false;
     selectionState.selectedEmployees.clear();
-    includeButton.textContent = "Incluir";
-    deleteButton.textContent = "Excluir";
+    
+    toggleButtonState(includeButton, 'include-btn', 'Incluir');
+    toggleButtonState(deleteButton, 'delete-btn', 'Excluir');
+    
+    const selectionInfo = document.getElementById('selectionInfo');
+    if (selectionInfo) selectionInfo.textContent = '';
     
     const cards = document.querySelectorAll('.employee-card');
     cards.forEach(card => {
         card.classList.remove('selectable', 'selected');
-        card.removeEventListener('click', toggleCardSelection);
     });
 };
 
@@ -217,7 +188,10 @@ const toggleCardSelection = (event) => {
         card.classList.add('selected');
     }
     
-    includeButton.innerHTML = `(${selectionState.selectedEmployees.size}/${employees.length}) selecionados`;
+    const selectionInfo = document.getElementById('selectionInfo');
+    if (selectionInfo) {
+        selectionInfo.innerHTML = `<i class="fa-solid fa-user-group"></i> (${selectionState.selectedEmployees.size}/${employees.length}) selecionados`;
+    }
 };
 
 const deleteSelectedEmployees = () => {
@@ -234,4 +208,12 @@ const deleteSelectedEmployees = () => {
     // Renderiza a lista atualizada
     renderEmployees(employees);
     disableSelectionMode();
+};
+
+const toggleButtonState = (button, newClass, newText) => {
+    // Remove todas as classes de estilo possíveis
+    button.classList.remove('include-btn', 'cancel-btn', 'delete-btn', 'search-btn');
+    // Adiciona apenas a nova classe
+    button.classList.add(newClass);
+    button.textContent = newText;
 };

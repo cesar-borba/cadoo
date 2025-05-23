@@ -1,75 +1,184 @@
-const grupos = [
-  { titulo: "Encontro Jovem", endereco: "Rua das Flores, 123", membros: 24, data: "2025-05-20", cor: "vermelho" },
-  { titulo: "Grupo de Casais", endereco: "Av. Central, 45", membros: 18, data: "2025-05-21", cor: "azul claro" },
-  { titulo: "Estudo Bíblico", endereco: "", membros: 12, data: "2025-05-22", cor: "amarelo" },
-  { titulo: "Louvor & Adoração", endereco: "Rua da Paz, 89", membros: 30, data: "2025-05-23", cor: "roxo" },
-  { titulo: "Grupo de Oração", endereco: "Capela Santa Luzia", membros: 15, data: "2025-05-24", cor: "verde" },
-  { titulo: "Grupo de Jovens Adultos", endereco: "Salão Paroquial", membros: 21, data: "2025-05-25", cor: "laranja" },
-  { titulo: "Grupo de Mulheres", endereco: "", membros: 20, data: "2025-05-26", cor: "rosa claro" },
-  { titulo: "Ministério de Música", endereco: "Estúdio Musical", membros: 10, data: "2025-05-27", cor: "azul escuro" },
-  { titulo: "Grupo de Homens", endereco: "Centro Comunitário", membros: 17, data: "2025-05-28", cor: "cinza" },
-  { titulo: "Célula Alfa Teste string muito", endereco: "", membros: 8, data: "2025-05-29", cor: "verde limão" },
-  { titulo: "Célula Beta", endereco: "Rua do Sol, 111", membros: 14, data: "2025-05-30", cor: "marrom" },
-  { titulo: "Célula Gama", endereco: "Av. Brasil, 200", membros: 13, data: "2025-06-01", cor: "turquesa" },
-  { titulo: "Encontro Teens", endereco: "", membros: 25, data: "2025-06-02", cor: "azul petróleo" },
-  { titulo: "Grupo de Intercessão", endereco: "Sala de Oração", membros: 19, data: "2025-06-03", cor: "verde musgo" },
-  { titulo: "Grupo Missionário", endereco: "Igreja Matriz", membros: 22, data: "2025-06-04", cor: "bege" },
-  { titulo: "Célula Restaurar", endereco: "Rua do Amor, 77", membros: 13, data: "2025-06-05", cor: "turquesa" },
-  { titulo: "Grupo de Discipulado", endereco: "Salão Social", membros: 16, data: "2025-06-06", cor: "azul marinho" },
-  { titulo: "Encontro de Fé", endereco: "Igreja Nova Aliança", membros: 27, data: "2025-06-07", cor: "dourado" },
-  { titulo: "Célula Vida Nova", endereco: "Rua Esperança, 88", membros: 14, data: "2025-06-08", cor: "lavanda" },
-  { titulo: "Grupo de Louvor Noturno", endereco: "Capela Central", membros: 9, data: "2025-06-09", cor: "vinho" },
-  { titulo: "Ministério Infantil", endereco: "Sala Kids", membros: 12, data: "2025-06-10", cor: "pêssego" },
-  { titulo: "Jovens em Cristo", endereco: "Salão da Juventude", membros: 22, data: "2025-06-11", cor: "verde oliva" },
-  { titulo: "Grupo Família de Deus", endereco: "Rua da Unidade, 101", membros: 18, data: "2025-06-12", cor: "pérola" },
-  { titulo: "Célula Ágape", endereco: "", membros: 10, data: "2025-06-13", cor: "rosa claro" },
-  { titulo: "Grupo Nova Vida", endereco: "Centro Esperança", membros: 15, data: "2025-06-14", cor: "verde limão" }
-];
-
 const container = document.getElementById("group-container");
-
 const searchButton = document.getElementById("searchButton");
 
+// Carrega grupos do localStorage
+const getGroups = () => {
+    return JSON.parse(localStorage.getItem('groups') || '[]');
+};
+
+const formatarData = (data) => {
+    const [ano, mes, dia] = data.split('-');
+    return `${dia}/${mes}/${ano}`;
+};
+
 // Função para renderizar os grupos
-function renderizarGrupos(gruposFiltrados = grupos) {
-  container.innerHTML = '';
+function renderizarGrupos(gruposFiltrados = getGroups()) {
+    container.innerHTML = '';
 
-  gruposFiltrados.forEach(grupo => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-          <h2>${grupo.titulo}</h2>
-          ${grupo.endereco ? `<p><span class="highlight">Endereço:</span> ${grupo.endereco}</p>` : ""}
-          <p><span class="highlight">Membros:</span> ${grupo.membros}</p>
-          <p><span class="highlight">Data:</span> ${grupo.data}</p>
-      `;
-      
-      // Adiciona evento de clique no card
-      card.addEventListener('click', () => {
-          navegarParaDetalhes(grupo);
-      });
+    if (gruposFiltrados.length === 0) {
+        container.innerHTML = '<p class="no-results">Nenhum grupo encontrado.</p>';
+        return;
+    }
 
-      container.appendChild(card);
-  });
+    gruposFiltrados.forEach(grupo => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.id = grupo.id;
+        card.innerHTML = `
+            <div class="card-header">
+                <i class="fa-solid fa-users"></i>
+                <h2>${grupo.titulo}</h2>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-content">
+                ${grupo.endereco ? `
+                    <div class="card-info">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>${grupo.endereco}</span>
+                    </div>` : ''
+                }
+                <div class="card-info">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>${formatarData(grupo.data)}</span>
+                </div>
+                <div class="card-info">
+                    <i class="fa-solid fa-user-group"></i>
+                    <span>${grupo.membros} ${grupo.membros === 1 ? 'membro' : 'membros'}</span>
+                </div>
+            </div>
+        `;
+        
+        card.addEventListener('click', (e) => {
+            if (selectionState.isSelectionMode) {
+                handleCardSelection(e, grupo.id);
+            } else {
+                window.location.href = `detalhes-grupo.html?id=${grupo.id}`;
+            }
+        });
+
+        container.appendChild(card);
+    });
 }
 
-function navegarParaDetalhes(grupo) {
-  // Salva os dados do grupo no localStorage
-  localStorage.setItem('grupoSelecionado', JSON.stringify(grupo));
-  // Redireciona para a página de detalhes
-  window.location.href = 'detalhes-grupo.html';
-}
+const handleCardSelection = (event, groupId) => {
+    const card = event.currentTarget;
+    
+    if (selectionState.selectedGroups.has(groupId)) {
+        selectionState.selectedGroups.delete(groupId);
+        card.classList.remove('selected');
+    } else {
+        selectionState.selectedGroups.add(groupId);
+        card.classList.add('selected');
+    }
+    
+    const groups = getGroups();
+    selectionInfo.innerHTML = `<i class="fa-solid fa-users"></i> (${selectionState.selectedGroups.size}/${groups.length}) selecionados`;
+};
 
-// Event listener para o botão de pesquisa
 searchButton.addEventListener('click', () => {
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase();
+    const grupos = getGroups();
 
-    // Filtra os grupos baseado no termo de pesquisa
     const gruposFiltrados = grupos.filter(grupo => 
         grupo.titulo.toLowerCase().includes(searchTerm)
     );
 
-    // Renderiza os grupos filtrados
     renderizarGrupos(gruposFiltrados);
 });
+
+const includeButton = document.getElementById("includeButton");
+const deleteButton = document.getElementById("deleteButton");
+const selectionState = {
+    selectedGroups: new Set(),
+    isSelectionMode: false
+};
+
+const selectionInfo = document.getElementById('selectionInfo');
+
+const toggleButtonState = (button, newClass, newText) => {
+    // Remove todas as classes de estilo possíveis
+    button.classList.remove('include-btn', 'cancel-btn', 'delete-btn', 'search-btn');
+    // Adiciona apenas a nova classe
+    button.classList.add(newClass);
+    button.textContent = newText;
+};
+
+includeButton.addEventListener('click', () => {
+    if (selectionState.isSelectionMode) {
+        disableSelectionMode();
+    } else {
+        window.location.href = 'incluir-grupo.html';
+    }
+});
+
+deleteButton.addEventListener('click', () => {
+    if (!selectionState.isSelectionMode) {
+        selectionState.isSelectionMode = true;
+        toggleButtonState(includeButton, 'cancel-btn', 'Cancelar');
+        selectionInfo.innerHTML = `<i class="fa-solid fa-users"></i> (0/${getGroups().length}) selecionados`;
+        enableSelectionMode();
+    } else {
+        // Confirma exclusão
+        if (selectionState.selectedGroups.size > 0) {
+            const confirmed = confirm(`Deseja excluir ${selectionState.selectedGroups.size} grupos?`);
+            if (confirmed) {
+                deleteSelectedGroups();
+            }
+        }
+        disableSelectionMode();
+    }
+});
+
+const enableSelectionMode = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.classList.add('selectable');
+    });
+};
+
+const disableSelectionMode = () => {
+    selectionState.isSelectionMode = false;
+    selectionState.selectedGroups.clear();
+    
+    toggleButtonState(includeButton, 'include-btn', 'Incluir');
+    toggleButtonState(deleteButton, 'delete-btn', 'Excluir');
+    
+    selectionInfo.textContent = '';
+    
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.classList.remove('selectable', 'selected');
+    });
+};
+
+const toggleCardSelection = (event) => {
+    event.preventDefault(); // Prevent navigation to details
+    const card = event.currentTarget;
+    const groupTitle = card.querySelector('h2').textContent;
+    const groups = getGroups();
+    const group = groups.find(g => g.titulo === groupTitle);
+    
+    if (selectionState.selectedGroups.has(group.id)) {
+        selectionState.selectedGroups.delete(group.id);
+        card.classList.remove('selected');
+    } else {
+        selectionState.selectedGroups.add(group.id);
+        card.classList.add('selected');
+    }
+    
+    includeButton.innerHTML = `(${selectionState.selectedGroups.size}/${groups.length}) selecionados`;
+};
+
+const deleteSelectedGroups = () => {
+    const groups = getGroups();
+    // Filter out selected groups
+    const updatedGroups = groups.filter(group => !selectionState.selectedGroups.has(group.id));
+    
+    // Update localStorage
+    localStorage.setItem('groups', JSON.stringify(updatedGroups));
+    
+    // Render updated list
+    renderizarGrupos(updatedGroups);
+    disableSelectionMode();
+};

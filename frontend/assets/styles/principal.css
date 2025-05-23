@@ -171,7 +171,6 @@ main {
 .option-box {
     background: var(--degrade-header);
     background-color: var(--cor-primaria);
-    border: 2px solid var(--cor-primaria);
     border-radius: 10px;
     width: 200px;
     height: 200px;
@@ -197,7 +196,6 @@ main {
 .option-box:hover {
     background: var(--botao-selecionado);
     color: var(--cor-branca);
-    border: 2px solid var(--botao-selecionado);
 }
 
 .side-menu {

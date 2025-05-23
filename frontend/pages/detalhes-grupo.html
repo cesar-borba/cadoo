@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Grupo - CadOO</title>
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
+    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/detalhes-grupo.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="../assets/js/slide-menu.js" defer></script>
     <script src="../assets/js/detalhes-grupo.js" defer></script>
 </head>
+
 <body>
     <header class="cabecalho">
         <div class="menu-tela">
@@ -41,7 +44,7 @@
         </div>
         <ul class="side-menu__list">
             <li class="side-menu__item"><a href="../pages/principal.html" class="item__link">Principal</a></li>
-            <li class="side-menu__item"><a href="../pages/membros.html" class="item__link">Membros</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-membros.html" class="item__link">Membros</a></li>
             <li class="side-menu__item"><a href="../pages/config.html" class="item__link">Configurações</a></li>
             <li class="side-menu__item"><a href="../index.html" class="item__link logout">Sair</a></li>
         </ul>
@@ -49,14 +52,20 @@
 
     <main>
         <div class="menu-tela">
-            <button onclick="voltarPagina()" class="btn-voltar">
+            <button onclick="voltarListaGrupos()" class="btn-voltar">
                 <i class="fa-solid fa-arrow-left" style="color: blue;"></i> Voltar
             </button>
         </div>
         <div class="detalhes-container">
             <h1 id="grupo-titulo"></h1>
-            <div id="grupo-info"></div>
+            <div class="grupo-info">
+                <section class="info-section">
+                    <h2>Informações do Grupo</h2>
+                    <div id="detalhes-grupo"></div>
+                </section>
+            </div>
         </div>
     </main>
 </body>
+
 </html>

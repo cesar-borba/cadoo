@@ -1,0 +1,29 @@
+{
+    "groups": [
+        { "id": 1, "titulo": "Encontro Jovem", "endereco": "Rua das Flores, 123", "membros": 24, "data": "2025-05-20" },
+        { "id": 2, "titulo": "Grupo de Casais", "endereco": "Av. Central, 45", "membros": 18, "data": "2025-05-21" },
+        { "id": 3, "titulo": "Estudo Bíblico", "endereco": "", "membros": 12, "data": "2025-05-22" },
+        { "id": 4, "titulo": "Louvor & Adoração", "endereco": "Rua da Paz, 89", "membros": 30, "data": "2025-05-23" },
+        { "id": 5, "titulo": "Grupo de Oração", "endereco": "Capela Santa Luzia", "membros": 15, "data": "2025-05-24" },
+        { "id": 6, "titulo": "Grupo de Jovens Adultos", "endereco": "Salão Paroquial", "membros": 21, "data": "2025-05-25" },
+        { "id": 7, "titulo": "Grupo de Mulheres", "endereco": "", "membros": 20, "data": "2025-05-26" },
+        { "id": 8, "titulo": "Ministério de Música", "endereco": "Estúdio Musical", "membros": 10, "data": "2025-05-27" },
+        { "id": 9, "titulo": "Grupo de Homens", "endereco": "Centro Comunitário", "membros": 17, "data": "2025-05-28" },
+        { "id": 10, "titulo": "Célula Alfa Teste string muito", "endereco": "", "membros": 8, "data": "2025-05-29" },
+        { "id": 11, "titulo": "Célula Beta", "endereco": "Rua do Sol, 111", "membros": 14, "data": "2025-05-30" },
+        { "id": 12, "titulo": "Célula Gama", "endereco": "Av. Brasil, 200", "membros": 13, "data": "2025-06-01" },
+        { "id": 13, "titulo": "Encontro Teens", "endereco": "", "membros": 0, "data": "2025-06-02" },
+        { "id": 14, "titulo": "Grupo de Intercessão", "endereco": "Sala de Oração", "membros": 19, "data": "2025-06-03" },
+        { "id": 15, "titulo": "Grupo Missionário", "endereco": "Igreja Matriz", "membros": 1, "data": "2025-06-04" },
+        { "id": 16, "titulo": "Célula Restaurar", "endereco": "Rua do Amor, 77", "membros": 13, "data": "2025-06-05" },
+        { "id": 17, "titulo": "Grupo de Discipulado", "endereco": "Salão Social", "membros": 16, "data": "2025-06-06" },
+        { "id": 18, "titulo": "Encontro de Fé", "endereco": "Igreja Nova Aliança", "membros": 27, "data": "2025-06-07" },
+        { "id": 19, "titulo": "Célula Vida Nova", "endereco": "Rua Esperança, 88", "membros": 14, "data": "2025-06-08" },
+        { "id": 20, "titulo": "Grupo de Louvor Noturno", "endereco": "Capela Central", "membros": 9, "data": "2025-06-09" },
+        { "id": 21, "titulo": "Ministério Infantil", "endereco": "Sala Kids", "membros": 12, "data": "2025-06-10" },
+        { "id": 22, "titulo": "Jovens em Cristo", "endereco": "Salão da Juventude", "membros": 22, "data": "2025-06-11" },
+        { "id": 23, "titulo": "Grupo Família de Deus", "endereco": "Rua da Unidade, 101", "membros": 18, "data": "2025-06-12" },
+        { "id": 24, "titulo": "Célula Ágape", "endereco": "", "membros": 10, "data": "2025-06-13" },
+        { "id": 25, "titulo": "Grupo Nova Vida", "endereco": "Centro Esperança", "membros": 15, "data": "2025-06-14" }
+    ]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Membro - CadOO</title>
+    <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
+    <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/detalhes-membro.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../assets/js/slide-menu.js" defer></script>
+    <script src="../assets/js/detalhes-membro.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="menu-tela">
+            <div class="bg-icon" id="menuActivator">
+                <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon"></i>
+            </div>
+            <div class="descricao-tela">Membros</div>
+        </div>
+        <div class="header-logo">
+            <img src="../assets/images/cadoo-favicon-white.svg" alt="Logo CadOO" class="logo">
+            <div class="descricao-logo">CadOO</div>
+        </div>
+        <div class="user-container">
+            <div class="descricao-user">Usuário Administrador</div>
+            <div class="bg-icon-user">
+                <i class="fa-solid fa-circle-user user-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="linha-header"></div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu__logo">
+            <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon-slide"></i>
+            <div class="side-menu__texto">Membros</div>
+        </div>
+        <ul class="side-menu__list">
+            <li class="side-menu__item"><a href="../pages/principal.html" class="item__link">Principal</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-grupos.html" class="item__link">Grupos</a></li>
+            <li class="side-menu__item"><a href="../pages/config.html" class="item__link">Configurações</a></li>
+            <li class="side-menu__item"><a href="../index.html" class="item__link logout">Sair</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <div class="menu-tela">
+            <button onclick="voltarListaMembros()" class="btn-voltar">
+                <i class="fa-solid fa-arrow-left" style="color: blue;"></i> Voltar
+            </button>
+        </div>
+        <div class="detalhes-container">
+            <h1 id="membro-titulo"></h1>
+            <div class="membro-info">
+                <section class="info-section">
+                    <h2>Dados Pessoais</h2>
+                    <div id="dados-pessoais"></div>
+                </section>
+                <section class="info-section">
+                    <h2>Endereço</h2>
+                    <div id="endereco"></div>
+                </section>
+                <section class="info-section">
+                    <h2>Contato</h2>
+                    <div id="contato"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

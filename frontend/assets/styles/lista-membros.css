@@ -23,6 +23,11 @@
     color: var(--cor-branca);
 }
 
+.cancel-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+}
+
 .btn.search-btn:hover {
     background-color: var(--botao-selecionado);
     transform: scale(1.05);
@@ -43,6 +48,22 @@
     gap: 10px;
     margin: 0;
     margin-left: auto;
+    align-items: center;
+}
+
+.selection-info {
+    font-family: var(--fonte-primaria);
+    color: var(--cor-texto);
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.selection-info i {
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
 }
 
 .search-grid-container {
@@ -192,6 +213,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .employee-card:hover {
@@ -211,20 +233,20 @@
 .employee-avatar {
     width: 40px;
     height: 40px;
-    background-color: var(--cor-terciaria);
+    background-color: var(--cor-primaria);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--cor-preta);
+    color: var(--cor-branca);
     flex-shrink: 0;
     margin-right: 10px;
 }
 
 .employee-card:hover {
     .employee-avatar {
-        background-color: var(--cor-primaria);
-        color: var(--cor-branca);
+        background-color: var(--cor-terciaria);
+        color: var(--cor-preta);
     }
 }
 
@@ -250,8 +272,6 @@
     text-align: right;
 }
 
-/*NEW CSS*/
-
 .employee-card.selectable {
     cursor: pointer;
     transition: background-color 0.2s;
@@ -264,9 +284,9 @@
 .employee-card.selected {
     background-color: var(--cor-terciaria-hover);
     border: 2px solid var(--cor-primaria);
+    padding: 9px 29px 9px 9px;
 }
 
-/* Estilos para o contador de seleção */
 .include-btn.counter {
     cursor: default;
     background-color: var(--cor-terciaria);

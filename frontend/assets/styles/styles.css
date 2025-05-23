@@ -23,3 +23,14 @@
     --degrade-header: linear-gradient(180deg, var(--cor-primaria), var(--botao-selecionado));
     --degrade-footer: linear-gradient(180deg, var(--botao-selecionado), var(--cor-primaria));
 }
+
+:root[data-tema="escuro"] {
+  /* --cor-primaria: #0B1F3F;
+  --cor-secundaria: #A8A8A0;
+  --cor-terciaria: #2D4B68; */
+  --cor-branca: #C8C8C8;
+  /* --botao-selecionado: #010A18; */
+
+  --fundo-principal: #121212;
+  --texto-principal: #C8C8C8;
+}
