@@ -4,23 +4,24 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incluir Membro - CadOO</title>
+    <title>Incluir Grupo - CadOO</title>
     <link rel="icon" type="image/svg" href="../assets/images/cadoo-favicon-blue.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="../assets/styles/reset.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/styles.css" rel="stylesheet" type="text/css" />
     <link href="../assets/styles/layout-menu.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/styles/incluir-grupo.css" rel="stylesheet" type="text/css" />
     <script src="../assets/js/slide-menu.js" defer></script>
+    <script src="../assets/js/incluir-grupo.js" defer></script>
 </head>
 
 <body>
-
     <header class="cabecalho">
         <div class="menu-tela">
             <div class="bg-icon" id="menuActivator">
                 <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon"></i>
             </div>
-            <div class="descricao-tela">Membros</div>
+            <div class="descricao-tela">Grupos</div>
         </div>
         <div class="header-logo">
             <img src="../assets/images/cadoo-favicon-white.svg" alt="Logo CadOO" class="logo">
@@ -39,11 +40,11 @@
     <div class="side-menu" id="sideMenu">
         <div class="side-menu__logo">
             <i class="fa-sharp fa-solid fa-bars fa-2xl menu-icon-slide"></i>
-            <div class="side-menu__texto">Membros</div>
+            <div class="side-menu__texto">Grupos</div>
         </div>
         <ul class="side-menu__list">
             <li class="side-menu__item"><a href="../pages/principal.html" class="item__link">Principal</a></li>
-            <li class="side-menu__item"><a href="../pages/lista-grupos.html" class="item__link">Grupos</a></li>
+            <li class="side-menu__item"><a href="../pages/lista-membros.html" class="item__link">Membros</a></li>
             <li class="side-menu__item"><a href="../pages/config.html" class="item__link">Configurações</a></li>
             <li class="side-menu__item"><a href="../index.html" class="item__link logout">Sair</a></li>
         </ul>
@@ -51,19 +52,134 @@
 
     <main>
         <div class="form-container">
-            <h1>Incluir Novo Grupo</h1>
-            <form id="memberForm">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="grupos">Nº Grupos</label>
-                    <input type="number" id="grupos" name="grupos" min="0" required>
-                </div>
+            <form id="groupForm">
                 <div class="form-actions">
+                    <button type="button" class="btn back-btn" onclick="window.history.back()">Voltar</button>
                     <button type="submit" class="btn save-btn">Salvar</button>
-                    <button type="button" class="btn cancel-btn" onclick="window.history.back()">Cancelar</button>
+                </div>
+
+                <h2 class="form-section-title">Dados Gerais</h2>
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" class="field" required>
+                    </div>
+
+                    <div class="form-group checkbox-field">
+                        <input type="checkbox" id="temData" name="temData" class="checkbox-input">
+                        <label for="temData">Tem data?</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input type="date" id="data" name="data" class="field" disabled>
+                    </div>
+
+                    <div class="form-group checkbox-field">
+                        <input type="checkbox" id="temEndereco" name="temEndereco" class="checkbox-input">
+                        <label for="temEndereco">Tem endereço?</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" name="descricao" class="field textarea-field" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <h2 class="form-section-title">Endereço</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group small-field">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" class="field" required pattern="\d{5}-\d{3}">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="rua">Rua</label>
+                            <input type="text" id="rua" name="rua" class="field" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group small-field">
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" name="numero" class="field" required>
+                        </div>
+                        <div class="form-group flex-grow">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento" name="complemento" class="field">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group medium-field">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" name="bairro" class="field" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group city-field">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" name="cidade" class="field" required>
+                        </div>
+                        <div class="form-group state-field">
+                            <label for="estado">UF</label>
+                            <select id="estado" name="estado" class="field" required>
+                                <option value="">UF</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="form-section-title">Membros</h2>
+                <div class="form-section">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" id="searchInput" class="field search-field"
+                                placeholder="Buscar membros...">
+                            <button type="button" id="searchButton" class="btn search-btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                        <button type="button" id="addMembersButton" class="btn include-btn">Adicionar</button>
+                    </div>
+
+                    <div class="members-selection">
+                        <div id="selectionInfo" class="selection-info"></div>
+                        <div id="membersList" class="members-list">
+                            <!-- Lista de membros será renderizada aqui -->
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
