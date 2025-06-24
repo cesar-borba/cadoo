@@ -24,6 +24,6 @@
         { "id": 22, "titulo": "Jovens em Cristo", "endereco": "Salão da Juventude", "membros": 22, "data": "2025-06-11" },
         { "id": 23, "titulo": "Grupo Família de Deus", "endereco": "Rua da Unidade, 101", "membros": 18, "data": "2025-06-12" },
         { "id": 24, "titulo": "Célula Ágape", "endereco": "", "membros": 10, "data": "2025-06-13" },
-        { "id": 25, "titulo": "Grupo Nova Vida", "endereco": "Centro Esperança", "membros": 15, "data": "2025-06-14" }
+        { "id": 25, "titulo": "Grupo Nova Vida", "endereco": "Centro Esperança", "membros": 3, "data": "2025-06-14" }
     ]
 }
